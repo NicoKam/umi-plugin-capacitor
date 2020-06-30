@@ -1,7 +1,8 @@
 node_modules
-dist
-lib
-esm
+dist/
+lib/
+esm/
+es/
 .vscode
 temp
 .idea

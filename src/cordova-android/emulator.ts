@@ -5,7 +5,6 @@ import { spawn } from '../utils';
 import Adb from './Adb';
 import logger from '../logger';
 
-
 const delay = (interval: number) => new Promise(resolve => setTimeout(resolve, interval));
 
 const versionToApiLevel = {
@@ -195,7 +194,7 @@ export const bestImage = async () => {
   return undefined;
 };
 
-export const waitForEmulator = async function (port) {
+export const waitForEmulator = async function (port: string | number): Promise<any> {
   const emulatorId = `emulator-${port}`;
 
   try {
