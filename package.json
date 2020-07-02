@@ -28,7 +28,7 @@
     "@types/node": "^12.12.42",
     "@whalecloud/eslint-config": "0.0.22",
     "jest": "^24.9.0",
-    "k-tools": "^0.1.6",
+    "k-tools": "^0.2.0",
     "rimraf": "^2.6.3",
     "ts-jest": "^24.0.2",
     "typescript": "^3.9.5",
