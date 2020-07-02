@@ -1,5 +1,6 @@
 import shelljs from 'shelljs';
 import { realpathSync } from 'fs';
+// @ts-ignore
 import androidVersions from 'android-versions';
 import { spawn } from '../utils';
 import Adb from './Adb';
