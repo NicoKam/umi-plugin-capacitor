@@ -51,13 +51,13 @@ export default (api: IApi) => {
   let first = true;
 
   api.onDevCompileDone(async () => {
-    const { android, ios } = api.args;
+    const { android, ios, liveUrl } = api.args;
     if (!android && !ios) {
       return;
     }
     if (first) {
       first = false;
-      const url = `http://${address.ip()}:${api.getPort()}`;
+      const url = liveUrl || `http://${address.ip()}:${api.getPort()}`;
       logger.info(`Setting url(${url}) to server.url in capacitor.config.json`);
       await changeCapacitorConfig(resolve(<string>api.paths.cwd, 'capacitor.config.json'), url);
       // const { capacitor = {} } = api.config;
