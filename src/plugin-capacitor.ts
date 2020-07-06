@@ -4,7 +4,7 @@ import { IApi } from 'umi';
 import { readFileJson, writeFileJson, spawn } from './utils';
 import { run as runAndroid } from './build-android';
 
-async function changeCapacitorConfig(configPath: string, url: string): Promise<void> {
+async function changeCapacitorConfig(configPath: string, url: string, cleartext: boolean = false): Promise<void> {
   const configContent = await readFileJson(configPath);
 
   await writeFileJson(configPath, {
@@ -12,6 +12,7 @@ async function changeCapacitorConfig(configPath: string, url: string): Promise<v
     server: {
       ...configContent.server,
       url,
+      cleartext,
     },
   });
 }
@@ -59,7 +60,7 @@ export default (api: IApi) => {
       first = false;
       const url = liveUrl || `http://${address.ip()}:${api.getPort()}`;
       logger.info(`Setting url(${url}) to server.url in capacitor.config.json`);
-      await changeCapacitorConfig(resolve(<string>api.paths.cwd, 'capacitor.config.json'), url);
+      await changeCapacitorConfig(resolve(<string>api.paths.cwd, 'capacitor.config.json'), url, true);
       // const { capacitor = {} } = api.config;
       if (android) {
         runAndroid();
